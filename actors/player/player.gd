@@ -1,4 +1,11 @@
-class_name PLAYER extends ACTOR
+class_name PLAYER extends CharacterBody2D
+
+@export var Name: String
+
+@export_group("Nodes")
+@export var player_controller: PLAYER_CONTROLLER
+#@export var animation_tree: AnimationTree
+@export var sprite: Sprite2D
 
 
 #func _ready() -> void:
@@ -13,14 +20,8 @@ func _physics_process(delta: float) -> void:
 	## Sync sprite's position with the node
 	sprite.position = self.position
 
-	## Get the movement inputs
-	input.handle_movement_input(delta)
-
 	## Handle movement direction & calculation
-	movement.handle_movement(delta)
-
-	## Apply movement
-	movement.apply_movement()
+	player_controller.handle_and_apply_movement(delta)
 
 
 #func update_animation_parameter() -> void:

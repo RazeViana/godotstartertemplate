@@ -1,29 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://do0cig0yp8m30"]
+[gd_scene load_steps=5 format=3 uid="uid://do0cig0yp8m30"]
 
 [ext_resource type="Script" uid="uid://b3r76br8l6ncj" path="res://actors/player/player.gd" id="1_nvxhs"]
-[ext_resource type="PackedScene" uid="uid://bxm61i43yo1mb" path="res://components/input/player input/player_input.tscn" id="2_ilk7j"]
-[ext_resource type="PackedScene" uid="uid://b6hob5omsrfm5" path="res://components/movement/player_movement.tscn" id="3_ax26v"]
+[ext_resource type="PackedScene" uid="uid://b6hob5omsrfm5" path="res://components/controllers/player controller/player_controller.tscn" id="3_ax26v"]
 [ext_resource type="Texture2D" uid="uid://4fn4adg3xs5n" path="res://assets/Default Human Test.png" id="4_lsqbn"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nvxhs"]
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("input", "movement", "sprite")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("player_controller", "sprite")]
 motion_mode = 1
 script = ExtResource("1_nvxhs")
-input = NodePath("Controllers/PlayerInput")
-movement = NodePath("Controllers/PlayerMovement")
+player_controller = NodePath("Controllers/PlayerController")
 sprite = NodePath("PlayerSprite")
 
 [node name="Controllers" type="Node" parent="."]
 
-[node name="PlayerInput" parent="Controllers" instance=ExtResource("2_ilk7j")]
-
-[node name="PlayerMovement" parent="Controllers" node_paths=PackedStringArray("characterBody", "input") instance=ExtResource("3_ax26v")]
-speed = 40.0
-acceleration = 50.0
-deceleration = 20.0
+[node name="PlayerController" parent="Controllers" node_paths=PackedStringArray("characterBody") instance=ExtResource("3_ax26v")]
+speed = 50.0
+acceleration = 40.0
+deceleration = 30.0
 characterBody = NodePath("../..")
-input = NodePath("../PlayerInput")
 
 [node name="Character" type="Node" parent="."]
 
