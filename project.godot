@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="Godot Starter Template"
+run/main_scene="uid://dl4jejmpofvj"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Signal_Debugger="*res://addons/SignalVisualizer/Debugger/SignalDebugger.gd"
 
 [editor]
 
@@ -21,4 +26,4 @@ version_control/autoload_on_startup=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/SimpleFormatOnSave/plugin.cfg", "res://addons/YouCanDoIt/plugin.cfg", "res://addons/fancy_editor_sounds/plugin.cfg", "res://addons/script-ide/plugin.cfg")
+enabled=PackedStringArray("res://addons/SignalVisualizer/plugin.cfg", "res://addons/SimpleFormatOnSave/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg", "res://addons/YouCanDoIt/plugin.cfg", "res://addons/fancy_editor_sounds/plugin.cfg", "res://addons/script-ide/plugin.cfg")
